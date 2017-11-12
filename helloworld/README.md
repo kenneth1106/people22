@@ -93,14 +93,14 @@ volumes:
 
 ### 5. Setting Up Postgres
 ```
-$ docker exec --it helloworld_postgres_1 psql -U postgres
+$ docker exec -it helloworld_postgres_1 psql -U postgres
 postgres=# \?
 \l[+]   [PATTERN]      list databases
 \du[S+] [PATTERN]      list roles
 \q                     quit psql
-postgres=# create role develop with createdb login password 'password1';
-postgres=# create role test with createdb login password 'password1';
-postgres=# create role prod with createdb login password 'password1';
+postgres=# create role develop with superuser login password 'password1';
+postgres=# create role test with superuser login password 'password1';
+postgres=# create role prod with superuser login password 'password1';
 ```
 ### 6. Rails command
 ```
@@ -108,6 +108,8 @@ $ docker exec -it helloworld_web_1 rails generate controller home index
 $ docker exec -it helloworld_web_1 rake db:setup
 $ docker exec -it rails g scaffold Post title:string body:text
 $ docker exec -it rake db:migrate
+$ docker exec -it helloworld_web_1 rails generate rspec:install
+$ docker exec -it bundle exec rspec
 ```
 
 ### Build & Run
