@@ -106,10 +106,10 @@ postgres=# create role prod with superuser login password 'password1';
 ```
 $ docker exec -it helloworld_web_1 rails generate controller home index
 $ docker exec -it helloworld_web_1 rake db:setup
-$ docker exec -it rails g scaffold Post title:string body:text
-$ docker exec -it rake db:migrate
+$ docker exec -it helloworld_web_1 rails g scaffold Post title:string body:text
+$ docker exec -it helloworld_web_1 rake db:migrate
 $ docker exec -it helloworld_web_1 rails generate rspec:install
-$ docker exec -it bundle exec rspec
+$ docker exec -it helloworld_web_1 bundle exec rspec
 ```
 
 ### Build & Run
