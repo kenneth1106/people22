@@ -1,0 +1,21 @@
+one:
+  git:
+    image: plugins/git
+    depath: 5
+
+services:
+  helloworld_postgres_1:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password1
+      POSTGRES_USER: test
+      POSTGRES_DB: helloworld
+
+pipeline:
+  testing:
+    image: ruby:2.3
+    commands:
+      - apt-get update -y
+      - apt-get install nodejs -y
+      - bundle install
+      - bundle exec rspec
